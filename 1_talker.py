@@ -5,14 +5,14 @@ import random
 from datetime import datetime
 
 def publisher():
-    rospy.init_node('seohi', anonymous=True)  # ← 이름 수정
+    rospy.init_node('garam', anonymous=True)  
     pub = rospy.Publisher('chatter', String, queue_size=10)
-    rate = rospy.Rate(0.2)  # ← 5초마다 1회 (1 / 5초 = 0.2Hz)
+    rate = rospy.Rate(0.2) 
 
     while not rospy.is_shutdown():
         num = random.randint(1, 100)
-        now = datetime.now().strftime('%H:%M:%S')
-        msg = f"[{now}] Random Number: {num}"
+        now = datetime.now()
+        msg = f"[{now}] random number: {num}"
         rospy.loginfo("Publishing: %s", msg)
         pub.publish(msg)
         rate.sleep()
