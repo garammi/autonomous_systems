@@ -15,12 +15,9 @@ def motion_publisher():
         motion_msg = Motion()
         motion_msg.move_x = random.randint(-5, 5)
         motion_msg.move_y = random.randint(-5, 5)
-        
-
         # 메시지 퍼블리싱
         rospy.loginfo(f"Publishing: x={motion_msg.move_x}, y={motion_msg.move_y}")
         pub.publish(motion_msg)
-        
         rate.sleep()
 
 if __name__ == '__main__':
