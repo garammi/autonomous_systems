@@ -39,6 +39,17 @@ def main():
     Ki_lin = 0.0
     Kd_lin = 0.2
 
+    # angle
+    Kp_ang = 4.0
+    Ki_ang = 0.2
+    Kd_ang = 3.0
+
+    # distance
+    Kp_lin = 0.9
+    Ki_lin = 0.03
+    Kd_lin = 0.25
+
+
     int_ang = 0.0
     prev_ang = 0.0
 
