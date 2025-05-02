@@ -16,8 +16,7 @@ def callback(msg):
 
     x = msg.pose.pose.position.x
     y = msg.pose.pose.position.y
-
-    # 방향 계산 (yaw)
+    
     q = msg.pose.pose.orientation
     sin = 2 * (q.w * q.z + q.x * q.y)
     cos = 1 - 2 * (q.y * q.y + q.z * q.z)
