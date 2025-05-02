@@ -69,22 +69,17 @@ def main():
         ang_err = goal_ang - yaw
         ang_err = math.atan2(math.sin(ang_err), math.cos(ang_err))
 
-        # 시간 계산
         current_time = time.time()
         dt = current_time - prev_time if current_time != prev_time else 1e-6
 
-        # PID for angle
         int_ang += ang_err * dt
         der_ang = (ang_err - prev_ang) / dt
         wz = Kp_ang * ang_err + Ki_ang * int_ang + Kd_ang * der_ang
 
-        # PID for distance (linear speed)
         int_dist += dist * dt
         der_dist = (dist - prev_dist) / dt
         vx = Kp_lin * dist + Ki_lin * int_dist + Kd_lin * der_dist
         vx = max(0.0, min(vx, 0.3))  # 속도 제한
-
-        rospy.loginfo(f"[x={x:.2f}, y={y:.2f}] dist={dist:.2f}, ang_err={ang_err:.2f}, vx={vx:.2f}, wz={wz:.2f}")
 
         if dist < 0.01:
             cmd.linear.x = 0.0
